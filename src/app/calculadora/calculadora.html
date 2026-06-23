@@ -1,0 +1,34 @@
+<div class="container mb-3 mt-4">
+    <div class="card text-primary text-center">
+        <div class="card-header">
+            <h2 class="card-title">{{ titulo }}</h2>
+        </div>
+
+        <div class="card-body text-success">
+            <form>
+                <div class="mb-3">
+                    <label class="form-label text-primary">Número Uno</label>
+                    <input type="number" class="form-control text-center text-primary"
+                           [(ngModel)]="numero1" name="numero1" min="1" max="100">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label text-primary">Número Dos</label>
+                    <input type="number" class="form-control text-center text-primary"
+                           [(ngModel)]="numero2" name="numero2" min="1" max="100">
+                </div>
+
+                <div class="mb-3 text-center">
+                    <button type="button" class="btn btn-outline-primary m-1" (click)="sumar()">Sumar</button>
+                    <button type="button" class="btn btn-outline-success m-1" (click)="restar()">Restar</button>
+                    <button type="button" class="btn btn-outline-danger m-1" (click)="multiplicar()">Multiplicar</button>
+                    <button type="button" class="btn btn-outline-warning text-dark m-1" (click)="dividir()">Dividir</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="card-footer text-info">
+            Aquí aparecerá el resultado de la operación = {{ resultado }}
+        </div>
+    </div>
+</div>

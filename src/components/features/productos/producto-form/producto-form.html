@@ -1,0 +1,91 @@
+<div class="mb-3">
+  <div class="container">
+    <div class="card border-success">
+      <div class="card-header text-primary text-center">
+        <h2 class="card-title">
+          {{ id() ? 'Actualizar Producto' : title }}
+        </h2>
+      </div>
+
+      <div class="card-body text-primary">
+        <form #productoForm="ngForm" (ngSubmit)="guardar(productoForm)">
+          <div class="mb-3">
+            <label for="nombreProducto" class="form-label">Nombre Producto</label>
+            <input
+              type="text"
+              id="nombreProducto"
+              name="nombreProducto"
+              class="form-control mb-3"
+              placeholder="Ingrese el nombre del producto"
+              [(ngModel)]="elProducto().nombreProducto"
+              required
+            />
+
+            <label for="descripcionProducto" class="form-label">Descripción Producto</label>
+            <input
+              type="text"
+              id="descripcionProducto"
+              name="descripcionProducto"
+              class="form-control mb-3"
+              placeholder="Ingrese la descripción del producto"
+              [(ngModel)]="elProducto().descripcionProducto"
+              required
+            />
+
+            <label for="precioProducto" class="form-label">Precio Producto</label>
+            <input
+              type="number"
+              id="precioProducto"
+              name="precioProducto"
+              class="form-control mb-3"
+              placeholder="Ingrese el precio del producto"
+              [(ngModel)]="elProducto().precioProducto"
+              required
+            />
+
+            <label for="existencia" class="form-label">Existencias</label>
+            <input
+              type="number"
+              id="existencia"
+              name="existencia"
+              class="form-control mb-3"
+              placeholder="Ingrese la existencia del producto"
+              [(ngModel)]="elProducto().existencia"
+              required
+            />
+
+            <label for="idCategoria" class="form-label">Categoría</label>
+            <select
+              id="idCategoria"
+              name="idCategoria"
+              class="form-select mb-3"
+              [(ngModel)]="elProducto().idCategoria"
+              [compareWith]="compararCategoria"
+              required
+            >
+              <option [ngValue]="null" disabled selected>-- Seleccione una categoría --</option>
+
+              @for (lc of listaCategorias(); track lc.idCategoria) {
+                <option [ngValue]="lc">
+                  {{ lc.nombreCategoria }}
+                </option>
+              }
+            </select>
+          </div>
+
+          <div class="d-flex gap-2 justify-content-end">
+            <button type="button" class="btn btn-secondary" (click)="cancelar()">Cancelar</button>
+            <button
+              type="submit"
+              class="btn"
+              [ngClass]="id() ? 'btn-warning' : 'btn-primary'"
+              [disabled]="productoForm.invalid"
+            >
+              {{ id() ? 'Actualizar' : 'Guardar' }}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

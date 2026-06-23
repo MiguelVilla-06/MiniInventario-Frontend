@@ -1,0 +1,33 @@
+<div class="mb-3">
+  <div class="container">
+    <div class="card border-success">
+      <div class="card-header text-primary text-center">
+        <h2 class="card-title">
+          {{ id() ? 'Actualizar Categoría' : title }}
+        </h2>
+      </div>
+
+      <div class="card-body text-primary">
+        <form #categoriaForm="ngForm" (ngSubmit)="guardar(categoriaForm)">
+          <div class="mb-3">
+            <label for="nombreCategoria" class="form-label">Nombre Categoría</label>
+            <input type="text" id="nombreCategoria" name="nombreCategoria" class="form-control mb-3" placeholder="Ingrese el nombre de la categoría" [(ngModel)]="laCategoria().nombreCategoria" required>
+
+            <label for="descripcionCategoria" class="form-label">Descripción Categoría</label>
+            <input type="text" id="descripcionCategoria" name="descripcionCategoria" class="form-control mb-3" placeholder="Ingrese la descripción de la categoría" [(ngModel)]="laCategoria().descripcionCategoria" required>
+
+          </div>
+
+          <div class="d-flex gap-2 justify-content-end">
+            <button type="button" class="btn btn-secondary" (click)="cancelar()">
+              Cancelar
+            </button>
+            <button type="submit" class="btn" [ngClass]="id() ? 'btn-warning' : 'btn-primary'" [disabled]="categoriaForm.invalid">
+              {{ id() ? 'Actualizar' : 'Guardar' }}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

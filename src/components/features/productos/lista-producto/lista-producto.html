@@ -1,0 +1,50 @@
+<div class="mb-3">
+  <div class="container">
+    <div class="card border-succes text-center">
+      <div class="card-header text-primary">
+        <h2 class="card-title">
+          {{ titulo }}
+        </h2>
+      </div>
+      <div class="card-body text-primary">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>idProducto</th>
+              <th>Nombre</th>
+              <th>Descripción</th>
+              <th>Precio</th>
+              <th>Existencia</th>
+              <th>Categoría</th>
+              <th>Fecha de Creación</th>
+              <th colspan="2">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (lc of (listaProductos()); track lc.idProducto) {
+              <tr>
+                <td>{{ lc.idProducto }}</td>
+                <td>{{ lc.nombreProducto }}</td>
+                <td>{{ lc.descripcionProducto }}</td>
+                <td>{{ lc.precioProducto }}</td>
+                <td>{{ lc.existencia }}</td>
+                <td>{{ lc.idCategoria?.nombreCategoria }}</td>
+                <td>{{ lc.createAt}}</td>
+                <td>
+                  <button class="btn btn-outline-success" (click)="irAForm(lc)">Actualizar</button>
+                </td>
+                <td>
+                  <button class="btn btn-danger" (click)="eliminar(lc)">Eliminar</button>
+                </td>
+              </tr>
+            } @empty{
+              <tr>
+                <td colspan="6">No hay productos disponibles.</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
