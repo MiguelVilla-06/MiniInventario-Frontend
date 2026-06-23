@@ -1,3 +1,3 @@
 [build]
   command = "ng build"
-  publish = "dist/mini-inventario-frontend/browser"
+  publish = "dist/Ejercicio1/browser"
