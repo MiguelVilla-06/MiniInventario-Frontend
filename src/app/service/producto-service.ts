@@ -8,7 +8,7 @@ import { Producto } from '../model/producto';
 })
 export class ProductoService {
   private http: HttpClient = inject(HttpClient);
-  private readonly urlEndPoint: string = 'http://localhost:8084/api/v1/productos';
+  private readonly urlEndPoint: string = 'https://miniinventario-backend-90d7.onrender.com/api/v1/productos';
 
   private httpHeaders = new HttpHeaders({
     'Content-Type': 'application/json'
